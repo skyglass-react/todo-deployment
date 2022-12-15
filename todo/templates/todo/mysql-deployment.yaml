@@ -1,16 +1,22 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
-metadata:
-  labels:
-    io.kompose.service: mysql
+metadata: 
   name: mysql
+  labels:
+    app: mysql
+    tier: backend
 spec:
+  selector: 
+    matchLabels: 
+      app: mysql
   replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
+      name: mysql
       labels:
+        app: mysql
         io.kompose.service: mysql
     spec:
       containers:
