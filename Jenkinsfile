@@ -11,8 +11,8 @@ node('master'){
 
     stage('Deploy'){
         sh """
-            helm dependency update petclinic
-            helm upgrade --install petclinic ./petclinic -f values.override.yaml \
+            helm dependency update todo
+            helm upgrade --install todo ./todo -f values.override.yaml \
                 --set metadata.jenkins.buildTag=${env.BUILD_TAG} \
                 --set metadata.git.commitId=${getCommitId()}
         """
